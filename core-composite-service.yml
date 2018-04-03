@@ -1,0 +1,4 @@
+spring:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:9999/uaa/user

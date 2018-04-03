@@ -1,0 +1,35 @@
+mongo.host: localhost
+mongo.port: 27017
+mongo.db: myBD_test
+mongo.thread_per_core: 3
+mongo.connection_per_thread: 3
+
+
+logging:
+  level:
+    root: WARN
+    com.nghia.tut.mss: INFO
+
+    # Set DEBUG level to activate our log-filter to log each request and response
+    #org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+
+    # FIXME: Get rid on NPE-exceptions in SC 1.1
+    com.netflix.hystrix.contrib.javanica.command.GenericCommand: ERROR
+
+    # Get info on failed OAuth access token validations
+    org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices: INFO
+
+    # Get info regarding connection to the cofig server and retries if required
+    org.springframework.cloud.config.client.ConfigServicePropertySourceLocator: INFO
+    org.springframework.retry.support.RetryTemplate: DEBUG
+
+    # Set INFO to see the allocated port
+    org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer: INFO
+    org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainer: INFO
+
+    # Set DEBUG level on Hystrix to get an error message when a fallback method is used.
+    com.netflix.hystrix: DEBUG
+    com.netflix.hystrix.strategy.properties.HystrixPropertiesChainedArchaiusProperty: WARN
+
+    # To get rid of fake WARN messages: "Deprecated trace headers detected. Please upgrade Sleuth to 1.1 or start sending headers present in the TraceMessageHeaders class",
+    org.springframework.cloud.sleuth.instrument.messaging.MessagingSpanExtractor: ERROR

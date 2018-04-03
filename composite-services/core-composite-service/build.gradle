@@ -1,0 +1,68 @@
+buildscript {
+    ext {
+        springBootVersion = '1.3.7.RELEASE'
+        springCloudVersion = 'Brixton.SR5'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "0.4.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'composite-service'
+    version = '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+            {exclude module: 'spring-boot-starter-tomcat'}
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+//    compile('org.springframework.cloud:spring-cloud-starter')
+    compile("org.springframework.cloud:spring-cloud-starter-eureka")
+    compile("org.springframework.cloud:spring-cloud-starter-config")
+    compile("org.springframework.cloud:spring-cloud-starter-stream-rabbit")
+
+// ZIPPKIN
+    compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+    compile('org.springframework.cloud:spring-cloud-sleuth-stream')
+
+// HYSTRIX
+    // spring-boot:2
+    //compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+    compile("org.springframework.cloud:spring-cloud-starter-hystrix")
+    compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')
+
+//    compile("org.apache.httpcomponents:httpclient:4.2.1")
+//    compile("org.apache.httpcomponents:fluent-hc:4.2.1")
+//    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
