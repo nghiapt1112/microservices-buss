@@ -1,5 +1,6 @@
 package com.nghia.tut.mss.infrustructure.domain;
 
+import com.nghia.tut.mss.utils.JsonUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.io.Serializable;
@@ -11,8 +12,9 @@ public class AbstractObject implements Serializable {
     }
 
     public String toString() {
-        return (new ReflectionToStringBuilder(this))
-                .setExcludeFieldNames(EXCLUDED_FIELD_NAMES_FROM_TOSTRING)
-                .toString();
+//        return (new ReflectionToStringBuilder(this))
+//                .setExcludeFieldNames(EXCLUDED_FIELD_NAMES_FROM_TOSTRING)
+//                .toString();
+        return JsonUtils.toJson(this);
     }
 }

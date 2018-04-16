@@ -9,29 +9,27 @@ import com.nghia.tut.mss.infrustructure.base.JsonSerializationException;
 import com.nghia.tut.mss.infrustructure.exception.DomainException;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 
 public class JsonUtils {
     public static final ObjectMapper OBJECT_MAPPER;
 
     static {
-        String ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+        OBJECT_MAPPER = new ObjectMapper();
 
-        OBJECT_MAPPER = new ObjectMapper()
+        OBJECT_MAPPER
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+                .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, true)
                 .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-        ;
-        OBJECT_MAPPER.getSerializerProvider()
+                .getSerializerProvider()
                 .setNullKeySerializer(new NullKeySerialize());
 
         OBJECT_MAPPER.setVisibility(OBJECT_MAPPER.getSerializationConfig().getDefaultVisibilityChecker()
                 .withFieldVisibility(JsonAutoDetect.Visibility.ANY).withGetterVisibility(JsonAutoDetect.Visibility.NONE)
                 .withSetterVisibility(JsonAutoDetect.Visibility.NONE)
                 .withCreatorVisibility(JsonAutoDetect.Visibility.NONE))
-                .enable(SerializationFeature.INDENT_OUTPUT)
-                .setDateFormat(new SimpleDateFormat(ISO_8601));
+                .enable(SerializationFeature.INDENT_OUTPUT);
+
     }
 
     public static <T> String toJson(T object) {

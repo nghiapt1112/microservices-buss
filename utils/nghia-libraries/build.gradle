@@ -3,7 +3,7 @@ buildscript {
 //        springBootVersion = '2.0.0.RELEASE'
         springBootVersion = '1.5.10.RELEASE'
         nghiaVersion = '1.0'
-        artifact = 'nghia-utils'
+        artifact = 'nghia-libraries'
     }
     repositories {
         mavenCentral()
@@ -32,9 +32,11 @@ ext {
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter')
+//    compile('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile('javax.validation:validation-api:2.0.1.Final')
 
 //  ext-libraries
     compile ("org.apache.commons:commons-lang3:3.7")

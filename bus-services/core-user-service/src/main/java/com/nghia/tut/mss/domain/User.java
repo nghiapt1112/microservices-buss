@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ public class User extends AbstractEntity {
 
     @Field("userName")
     private String name;
-
+    private Date birth;
     private String userCode;
     private String organizationCode; // multiple tenant.
     private List<String> jobs;
@@ -77,6 +78,10 @@ public class User extends AbstractEntity {
 
     public User initTestData(String userCode) {
         return new User(null, "default user".concat(userCode), userCode, "default orgCoce");
+    }
+
+    public Date getBirth() {
+        return birth;
     }
 
     public List<String> getJobs() {
