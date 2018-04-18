@@ -1,0 +1,78 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.12.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'composite-service'
+    version = '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+            {exclude module: 'spring-boot-starter-tomcat'}
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+//    compile('org.springframework.cloud:spring-cloud-starter')
+    compile("org.springframework.cloud:spring-cloud-starter-eureka")
+    compile("org.springframework.cloud:spring-cloud-starter-config")
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+//    compile("org.springframework.cloud:spring-cloud-starter-stream-rabbit")
+
+// ZIPPKIN
+    compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+    compile('org.springframework.cloud:spring-cloud-sleuth-stream')
+
+// HYSTRIX
+    // spring-boot:2
+    //compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+    compile("org.springframework.cloud:spring-cloud-starter-hystrix")
+    compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+
+
+    compile ("com.nghia.tut.utils:nghia-libraries:1.0"){
+        exclude module: 'spring-boot-starter-data-mongodb'
+        exclude module: 'spring-boot-starter-amqp'
+        exclude module: 'spring-boot-starter-web'
+    }
+}
+
+ext {
+    springCloudVersion = 'Edgware.SR3'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+tasks.withType(JavaExec) {
+    if (System.getProperty('debug', '0') == '1') {
+        jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005'
+    }
+}

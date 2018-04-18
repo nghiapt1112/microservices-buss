@@ -1,0 +1,58 @@
+version: "3.3"
+services:
+# DISCOVERY
+  discovery:
+    build: supporters/sup-discovery-server
+    image: nghia_ms-discovery-server
+    container_name: nghia_ms-discovery-server
+    ports:
+      - "8761:8761"
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xmx256M
+
+# CONFIG:
+  config:
+    build: supporters/sup-config-server
+    image: nghia_ms-config-server
+    container_name: nghia_ms-config-server
+    ports:
+      - "8888:8888"
+    volumes:
+      - ${PWD}/../../../config-server/:/config-repo
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:/config-repo
+      - SECURITY_USER_NAME=config_client
+      - SECURITY_USER_PASSWORD=config_client_pwd
+      - JAVA_TOOL_OPTIONS=-Xmx256M
+      - MY_CONFIG_ENCRYPT_KEY=my-very-secret-encryption-key
+    depends_on: 
+        - discovery
+
+# AUTH:
+  auth:
+    build: supporters/sup-auth
+    image: nghia_ms-sup_auth
+    container_name: nghia_ms-sup_auth
+    ports:
+      - "9999:9999"
+    environment:
+      - MY_CONFIG_USER=config_client
+      - MY_CONFIG_PWD=config_client_pwd
+      - JAVA_TOOL_OPTIONS=-Xmx256M
+    depends_on: 
+        - config
+
+# EDGE:
+  edge:
+    build: supporters/sup-edge-server
+    image: nghia_ms-edge-server
+    container_name: nghia_ms-edge-server
+    ports:
+      - "8765:8765"
+    environment:
+      - MY_CONFIG_USER=config_client
+      - MY_CONFIG_PWD=config_client_pwd
+      - JAVA_TOOL_OPTIONS=-Xmx256M
+    depends_on: 
+        - auth

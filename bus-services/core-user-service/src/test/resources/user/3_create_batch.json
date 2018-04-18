@@ -1,0 +1,168 @@
+[
+  {
+    "desc": "CREATE USER 1",
+    "api": "/user/batch",
+    "action": "POST",
+    "input": {
+      "body": {
+        "users": [
+          {
+            "email": "nghia.pham@netcompany.com",
+            "name": "Pham Tuan Nghia",
+            "userCode": "PTN-111293",
+            "jobs": [
+              "java",
+              "scala",
+              "python"
+            ],
+            "childObject1": {
+              "field1": "val_childObject1_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field2": "childObject1_val_2childObject1_val_2childObject1_val_2childObject1_val_2childObject1_val_2",
+              "field3": "childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3",
+              "field4": "childObject1_val_4",
+              "field5": "childObject1_val_5",
+              "field6": "childObject1_val_6",
+              "field7": "childObject1_val_7",
+              "field8": "childObject1_val_8",
+              "field9": "childObject1_val_9",
+              "field10": "childObject1_val_10"
+            },
+            "childObject2": {
+              "field1": "childObject2_val_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field2": "childObject2_val_2fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field3": "childObject2_val_3fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field4": "childObject2_val_4fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field5": "childObject2_val_5fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field6": "childObject2_val_6fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field7": "childObject2_val_7fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field8": "childObject2_val_8fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field9": "childObject2_val_9fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field10": "childObject2_val_10fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1"
+            },
+            "child2LayerObject1": {
+              "field1": "child2LayerObject1_val_field1",
+              "field2": "child2LayerObject1_val_field2",
+              "field3": "child2LayerObject1_val_field3",
+              "childObject1": {
+                "field1": "child2LayerObject1_childObject1_val_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+                "field2": "child2LayerObject1_childObject1_val_field2",
+                "field3": "child2LayerObject1_childObject1_val_field3",
+                "field4": "child2LayerObject1_childObject1_val_field4",
+                "field5": "child2LayerObject1_childObject1_val_field5",
+                "field6": "child2LayerObject1_childObject1_val_field6",
+                "field7": "child2LayerObject1_childObject1_val_field7",
+                "field8": "child2LayerObject1_childObject1_val_field8",
+                "field9": "child2LayerObject1_childObject1_val_field9",
+                "field10": "child2LayerObject1_childObject1_val_field10"
+              }
+            },
+            "child2LayerObject2": {
+            },
+            "child2LayerObject3": {
+            },
+            "child2LayerObject4": {
+            },
+            "child2LayerObject5": {
+            },
+            "child2LayerObject6": {
+            },
+            "child2LayerObject7": {
+            },
+            "child2LayerObject8": {
+            },
+            "child2LayerObject9": {
+            },
+            "child2LayerObject10": {
+            }
+          },
+          {
+            "email": "nghia.pham@netcompany.com",
+            "name": "Pham Tuan Nghia",
+            "userCode": "PTN-111293",
+            "jobs": [
+              "java",
+              "scala",
+              "python"
+            ],
+            "childObject1": {
+              "field1": "val_childObject1_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field2": "childObject1_val_2childObject1_val_2childObject1_val_2childObject1_val_2childObject1_val_2",
+              "field3": "childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3childObject1_val_3",
+              "field4": "childObject1_val_4",
+              "field5": "childObject1_val_5",
+              "field6": "childObject1_val_6",
+              "field7": "childObject1_val_7",
+              "field8": "childObject1_val_8",
+              "field9": "childObject1_val_9",
+              "field10": "childObject1_val_10"
+            },
+            "childObject2": {
+              "field1": "childObject2_val_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field2": "childObject2_val_2fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field3": "childObject2_val_3fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field4": "childObject2_val_4fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field5": "childObject2_val_5fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field6": "childObject2_val_6fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field7": "childObject2_val_7fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field8": "childObject2_val_8fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field9": "childObject2_val_9fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+              "field10": "childObject2_val_10fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1"
+            },
+            "child2LayerObject1": {
+              "field1": "child2LayerObject1_val_field1",
+              "field2": "child2LayerObject1_val_field2",
+              "field3": "child2LayerObject1_val_field3",
+              "childObject1": {
+                "field1": "child2LayerObject1_childObject1_val_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_fieldval_field1",
+                "field2": "child2LayerObject1_childObject1_val_field2",
+                "field3": "child2LayerObject1_childObject1_val_field3",
+                "field4": "child2LayerObject1_childObject1_val_field4",
+                "field5": "child2LayerObject1_childObject1_val_field5",
+                "field6": "child2LayerObject1_childObject1_val_field6",
+                "field7": "child2LayerObject1_childObject1_val_field7",
+                "field8": "child2LayerObject1_childObject1_val_field8",
+                "field9": "child2LayerObject1_childObject1_val_field9",
+                "field10": "child2LayerObject1_childObject1_val_field10"
+              }
+            },
+            "child2LayerObject2": {
+            },
+            "child2LayerObject3": {
+            },
+            "child2LayerObject4": {
+            },
+            "child2LayerObject5": {
+            },
+            "child2LayerObject6": {
+            },
+            "child2LayerObject7": {
+            },
+            "child2LayerObject8": {
+            },
+            "child2LayerObject9": {
+            },
+            "child2LayerObject10": {
+            }
+          }
+
+
+        ]
+      }
+    },
+    "output": {
+      "status": 200,
+      "body": {
+        "user": {
+          "id": "$userId",
+          "name": "$userName",
+          "userCode": "PTN-111293",
+          "jobs": [
+            "java",
+            "scala",
+            "python"
+          ]
+        }
+      }
+    }
+  }
+]

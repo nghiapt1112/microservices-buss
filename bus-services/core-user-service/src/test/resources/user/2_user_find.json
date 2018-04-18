@@ -1,0 +1,26 @@
+[
+  {
+    "desc": "Find user #userId",
+    "api": "/user/#userId",
+    "action": "GET",
+    "input": {
+      "body": {
+        "user": {
+          "email": "nghia.pham@netcompany.com",
+          "name": "Pham Tuan Nghia",
+          "userCode": "PTN-111293"
+        }
+      }
+    },
+    "output": {
+      "status": 200,
+      "body": {
+        "user": {
+          "id": "#userId",
+          "name": "$userName",
+          "userCode": "PTN-111293"
+        }
+      }
+    }
+  }
+]
