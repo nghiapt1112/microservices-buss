@@ -1,5 +1,6 @@
 package com.nghia.tut.mss.infrustructure.controller;
 
+import com.nghia.tut.mss.infrustructure.domain.AbstractObject;
 import com.nghia.tut.mss.infrustructure.exception.DomainException;
 import com.nghia.tut.mss.infrustructure.validator.AbstractCustomValidator;
 import com.nghia.tut.mss.utils.JsonUtils;
@@ -36,16 +37,16 @@ public class AbstractCustomController {
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        binder.addValidators(abstractCustomValidator);
-
+        if (binder.getTarget() instanceof AbstractObject) {
+            CONTROLLER_LOGGER.info("\n\n****InitBinder added customValidator****\n\n");
+            binder.addValidators(abstractCustomValidator);
+        }
 
 //        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(PATTERN);
 //        simpleDateFormat.setLenient(false);
 //        binder.registerCustomEditor( Date.class, new CustomDateEditor( simpleDateFormat,false));
-
 //        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat(PATTERN), true));
 
-        CONTROLLER_LOGGER.info("\n\n****InitBinder added customValidator****\n\n");
     }
 
 

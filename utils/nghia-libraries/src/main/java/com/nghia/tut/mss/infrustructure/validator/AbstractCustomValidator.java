@@ -30,14 +30,6 @@ public class AbstractCustomValidator implements org.springframework.validation.V
     @Override
     public void validate(Object target, Errors errors) {
         LOGGER.warn("AbstractCustomValidator.validate");
-        if (target instanceof AbstractObject != true) {
-            LOGGER.warn("\n\tRequesting Object is not instance of AbstractObject");
-            return;
-        }
-
-
-
-
         Set<ConstraintViolation<Object>> constraintViolations = validator.validate(target);
 //        if (constraintViolations.size() > 0) {
 //            throw new UserException(123, "Validation failded");
