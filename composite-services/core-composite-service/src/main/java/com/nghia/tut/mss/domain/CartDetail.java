@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CartDetail extends BaseDomain {
+public class CartDetail  {
     private String userCode;
     private User userOwner;
     private List<Product> products;

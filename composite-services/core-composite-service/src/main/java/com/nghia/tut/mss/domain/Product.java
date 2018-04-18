@@ -1,6 +1,6 @@
 package com.nghia.tut.mss.domain;
 
-public class Product extends BaseDomain {
+public class Product  {
     private int productId;
     private String name;
     private int weight;
