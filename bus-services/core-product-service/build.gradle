@@ -1,11 +1,12 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.10.RELEASE'
-        springCloudVersion = 'Edgware.SR3'
+        springBootVersion = '2.0.1.RELEASE'
+        springCloudVersion = 'Finchley.M9'
     }
     repositories {
+        mavenLocal()
         mavenCentral()
-        jcenter()
+        maven { url "https://repo.spring.io/milestone" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -15,38 +16,51 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
-    baseName = 'product-service'
+    baseName = 'user-service'
     version = '0.0.1'
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+
 repositories {
     mavenLocal()
-    jcenter()
     mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-            {
-                exclude module: 'spring-boot-starter-tomcat'
-            }
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+
+//EXt libraries
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    compile("org.springframework.cloud:spring-cloud-starter-config")
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+
     compile("org.springframework.boot:spring-boot-starter-undertow")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+//Hystrix
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+    compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')
 
-    compile("org.springframework.cloud:spring-cloud-starter-hystrix")
-    compile("org.springframework.cloud:spring-cloud-starter-eureka")
-    compile("org.springframework.cloud:spring-cloud-starter-config")
-    compile("org.springframework.cloud:spring-cloud-starter-bus-amqp")
+// ZIPPKIN
     compile('org.springframework.cloud:spring-cloud-starter-sleuth')
-    compile('org.springframework.cloud:spring-cloud-sleuth-stream')
+    compile('org.springframework.cloud:spring-cloud-starter-zipkin')
+    compile('org.springframework.amqp:spring-rabbit')
+//    compile('org.springframework.cloud:spring-cloud-sleuth-stream')
+//Inter libraries
+    compile ("com.nghia.tut.utils:nghia-libraries:1.0"){
+        exclude module: 'spring-boot-starter-amqp'
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    runtime('org.springframework.boot:spring-boot-devtools')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('io.projectreactor:reactor-test')
 
-
-    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
 dependencyManagement {
@@ -54,3 +68,17 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
+
+tasks.withType(JavaExec) {
+    if (System.getProperty('debug', '0') == '1') {
+        jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005'
+    }
+}
+
+
+//task qa {
+//    doLast {
+//        bootRun { systemProperty "spring.profiles.active", "qa" }
+//    }
+//    qa.finalizedBy bootRun
+//}
