@@ -1,13 +1,1 @@
-dependencies {
-
-//Ext libraries
-    compile ("com.nghia.tut.utils:nghia-libraries:1.0"){
-        exclude module: 'spring-boot-starter-data-mongodb'
-        exclude module: 'spring-boot-starter-amqp'
-        exclude module: 'spring-boot-starter-tomcat'
-    }
-//    runtime('org.springframework.boot:spring-boot-devtools')
-//    testCompile('org.springframework.boot:spring-boot-starter-test')
-//    testCompile('io.projectreactor:reactor-test')
-
-}
+// config

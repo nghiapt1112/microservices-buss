@@ -3,3 +3,7 @@ rootProject.name = 'bus-services'
 include 'bus-services/core-product-service'
 include 'bus-services/core-user-service'
 include 'composite-services/core-composite-service'
+
+project(':bus-services/core-product-service').name= 'ng_product'
+project(':bus-services/core-user-service').name= 'ng_user'
+project(':composite-services/core-composite-service').name= 'ng_composite'
