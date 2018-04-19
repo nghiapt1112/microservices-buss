@@ -1,0 +1,89 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.RELEASE'
+        springCloudVersion = 'Finchley.M9'
+    }
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    tasks.withType(Jar) {
+        destinationDir = file("$rootDir/build/")
+    }
+    version = '0.0.1'
+
+
+    tasks.withType(JavaExec) {
+        if (System.getProperty('debug', '0') == '1') {
+            jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005'
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter-webflux')
+
+        compile("org.springframework.cloud:spring-cloud-starter-config")
+        compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+        compile("org.springframework.boot:spring-boot-starter-undertow")
+        compile("org.springframework.boot:spring-boot-starter-actuator")
+
+        compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+        //    compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+
+        //HYSTRIX
+        compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+        compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')
+
+        // ZIPPKIN
+        compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+        compile('org.springframework.cloud:spring-cloud-starter-zipkin')
+        compile('org.springframework.amqp:spring-rabbit')
+        //    compile('org.springframework.cloud:spring-cloud-sleuth-stream')
+
+        //Ext libraries
+        compile("com.nghia.tut.utils:nghia-libraries:1.0") {
+            exclude module: 'spring-boot-starter-amqp'
+            exclude module: 'spring-boot-starter-tomcat'
+        }
+
+        runtime('org.springframework.boot:spring-boot-devtools')
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+}
+
+project(':bus-services/core-user-service') {
+    dependencies {
+        compile("com.nghia.tut.utils:nghia-libraries:1.0") {
+            exclude module: 'spring-boot-starter-amqp'
+            exclude module: 'spring-boot-starter-tomcat'
+        }
+    }
+}
