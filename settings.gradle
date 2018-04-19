@@ -1,0 +1,5 @@
+rootProject.name = 'bus-services'
+
+include 'bus-services/core-product-service'
+include 'bus-services/core-user-service'
+include 'composite-services/core-composite-service'
