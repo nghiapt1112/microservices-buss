@@ -19,10 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 public class ComposeController {
     protected static final Logger CONTROLLER_LOGGER = LoggerFactory.getLogger(ComposeController.class);
 
-//
-    @Value("${spring.oauth2.resource.userInfoUri}")
-    private String userInfoUri;
-
     @Autowired
     private Environment env;
     @Autowired
@@ -40,8 +36,6 @@ public class ComposeController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getEnv(@RequestParam String envVar) {
         CONTROLLER_LOGGER.info("Requesting envVar {} with value: {}", envVar, env.getProperty(envVar));
-        System.out.println("userInfoUri:\t" + userInfoUri);
-
         return env.getProperty(envVar);
 
     }

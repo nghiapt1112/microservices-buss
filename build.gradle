@@ -87,3 +87,12 @@ project(':ng_user') {
         }
     }
 }
+
+project(':ng_composite') {
+    dependencies {
+        compile("com.nghia.tut.utils:nghia-libraries:1.0") {
+            exclude module: 'spring-boot-starter-amqp'
+            exclude module: 'spring-boot-starter-tomcat'
+        }
+    }
+}
