@@ -23,13 +23,13 @@ public class ComposeServiceImpl extends BaseServiceImpl implements ComposeServic
         LOG.warn("requesting ...................... with : {}", userCode);
         LOG.warn("requesting ...................... with : {}", productCode);
 
-        Product productInfo = productService.findByCode(authKey, productCode);
-        LOG.warn("product after parse: {}", productInfo);
-
         User userInfo = userService.findByCode(authKey, userCode);
         LOG.warn("user after parse: {}", userInfo);
 
-        CartDetail cartDetail = new CartDetail().setProduct(productInfo).setUserOwner(userInfo).setUserCode(userCode);
+//        Product productInfo = productService.findByCode(authKey, productCode);
+//        LOG.warn("product after parse: {}", productInfo);
+
+        CartDetail cartDetail = new CartDetail().setUserOwner(userInfo).setUserCode(userCode);
         return cartDetail;
     }
 

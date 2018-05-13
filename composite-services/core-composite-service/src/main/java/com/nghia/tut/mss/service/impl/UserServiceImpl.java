@@ -8,19 +8,24 @@ import com.nghia.tut.mss.utils.BaseServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.net.URI;
 import java.util.Map;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
     private String userWithCode(String uCode) {
-        return this.getGATE_WAY_URL().concat("/user_path/user/").concat(uCode);
+        String fallBack = this.getGATE_WAY_URL().concat("/user_path/");
+        String resolvedURL = this.getServiceURL("bus-user", fallBack);
+
+
+        return resolvedURL.concat("user/").concat(uCode);
     }
 
-    @HystrixCommand(fallbackMethod = "defaultUser")
+//    @HystrixCommand(fallbackMethod = "defaultUser")
     public User findByCode(String authKey, String uCode) {
-        Map header = ImmutableMap.of(AUTHORIZATION, authKey);
-        return super.getForObject(userWithCode(uCode), header, User.class);
+//        Map header = ImmutableMap.of(AUTHORIZATION, authKey);
+        return super.getForObject(userWithCode(uCode), null, User.class);
     }
 
     public User defaultUser(String authKey, String uCode) {

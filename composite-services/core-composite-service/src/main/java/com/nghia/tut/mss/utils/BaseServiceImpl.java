@@ -50,17 +50,17 @@ public abstract class BaseServiceImpl implements BaseService {
     public BaseServiceImpl() {
     }
 
-    protected URI getServiceURL(String serviceId, String fallbackURI) {
+    protected String getServiceURL(String serviceId, String fallbackURI) {
         URI uri;
         try {
             ServiceInstance instance = this.loadBalancerClient.choose(serviceId);
-            uri = instance.getUri();
-            LOG.debug("Resolved serviceId '{}' to URL '{}'.", serviceId, uri);
+            LOG.debug("Resolved serviceId '{}' to URL '{}'.", serviceId, instance);
+            return instance.getUri().toString().concat("/");
         } catch (Exception e) {
-            uri = URI.create(fallbackURI);
+//            uri = URI.create(fallbackURI);
             e.printStackTrace();
         }
-        return uri;
+        return fallbackURI;
     }
 
     protected <T> T readData(Class<T> clazz, String src) {
@@ -100,4 +100,5 @@ public abstract class BaseServiceImpl implements BaseService {
         }
         return new HttpEntity<>(headers);
     }
+
 }

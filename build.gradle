@@ -24,12 +24,6 @@ allprojects {
     }
     version = '1.0'
 
-
-    tasks.withType(JavaExec) {
-        if (System.getProperty('debug', '0') == '1') {
-            jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005'
-        }
-    }
 }
 
 subprojects {
@@ -57,9 +51,9 @@ subprojects {
         compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')
 
         // ZIPPKIN
-        compile('org.springframework.cloud:spring-cloud-starter-sleuth')
-        compile('org.springframework.cloud:spring-cloud-starter-zipkin')
-        compile('org.springframework.amqp:spring-rabbit')
+//        compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+//        compile('org.springframework.cloud:spring-cloud-starter-zipkin')
+//        compile('org.springframework.amqp:spring-rabbit')
         //    compile('org.springframework.cloud:spring-cloud-sleuth-stream')
 
         //Ext libraries
@@ -86,6 +80,12 @@ project(':ng_user') {
             exclude module: 'spring-boot-starter-tomcat'
         }
     }
+
+    tasks.withType(JavaExec) {
+        if (System.getProperty('debug', '0') == '1') {
+            jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5007'
+        }
+    }
 }
 
 project(':ng_composite') {
@@ -93,6 +93,12 @@ project(':ng_composite') {
         compile("com.nghia.tut.utils:nghia-libraries:1.0") {
             exclude module: 'spring-boot-starter-amqp'
             exclude module: 'spring-boot-starter-tomcat'
+        }
+    }
+
+    tasks.withType(JavaExec) {
+        if (System.getProperty('debug', '0') == '1') {
+            jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5008'
         }
     }
 }
