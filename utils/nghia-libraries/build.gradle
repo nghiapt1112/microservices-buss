@@ -1,12 +1,17 @@
 buildscript {
     ext {
-//        springBootVersion = '2.0.0.RELEASE'
+//      springBootVersion = '2.0.1.RELEASE'
+//      springCloudVersion = 'Finchley.M9'  // boot:2.0
+
+        springCloudVersion = 'Edgware.SR2'
         springBootVersion = '1.5.10.RELEASE'
         nghiaVersion = '1.0'
         artifact = 'nghia-libraries'
     }
     repositories {
         mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -23,23 +28,22 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
 }
-
-ext {
-//    springCloudVersion = 'Finchley.M8'  // boot:2.0
-    springCloudVersion = 'Edgware.SR2'
-}
-
 
 dependencies {
 //    compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile('org.springframework.cloud:spring-cloud-commons')
+
     compile('javax.validation:validation-api:2.0.1.Final')
 
 //  ext-libraries
     compile ("org.apache.commons:commons-lang3:3.7")
+    compile ("org.apache.commons:commons-collections4:4.1")
     compile ("commons-io:commons-io:2.6")
 }
 

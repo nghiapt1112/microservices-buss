@@ -1,6 +1,8 @@
 package com.nghia.tut.mss.domain;
 
-public class Product  {
+import com.nghia.libraries.commons.mss.infrustructure.domain.AbstractObject;
+
+public class Product extends AbstractObject {
     private int productId;
     private String name;
     private int weight;

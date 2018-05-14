@@ -25,8 +25,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
     public User defaultUser(String authKey, String uCode) {
         LOG.warn("Using fallback method for user-service");
-        ResponseEntity<User> userResponse = super.badGateWay(User.class);
-        return userResponse.getBody();
+//        ResponseEntity<User> userResponse = super.badGateWay(User.class);
+//        return userResponse.getBody();\
+        return null;
     }
 
 }

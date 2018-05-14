@@ -1,0 +1,1 @@
+java -jar build/ng_composite-1.0.jar

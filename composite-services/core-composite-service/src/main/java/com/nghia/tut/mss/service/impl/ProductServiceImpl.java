@@ -2,17 +2,17 @@ package com.nghia.tut.mss.service.impl;
 
 import com.google.common.collect.ImmutableMap;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.nghia.libraries.commons.mss.infrustructure.service.AbstractServiceImpl;
 import com.nghia.tut.mss.domain.Product;
 import com.nghia.tut.mss.service.ProductService;
 import com.nghia.tut.mss.utils.BaseServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Service
-public class ProductServiceImpl extends BaseServiceImpl implements ProductService {
+public class ProductServiceImpl extends AbstractServiceImpl implements ProductService {
     String PRODUCT_SERVICE = "/product";
     String PRODUCT_DETAIL = "/product/";
 

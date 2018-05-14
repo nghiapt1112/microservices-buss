@@ -26,9 +26,9 @@ public abstract class BaseServiceImpl implements BaseService {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    @Autowired
-    private ResponseService responseService;
-
+//    @Autowired
+//    private ResponseService responseService;
+//
     protected Map<String, Object> shareData = new HashMap<>();
 
     protected String authorizationKey;
@@ -86,10 +86,10 @@ public abstract class BaseServiceImpl implements BaseService {
         LOG.warn("Requesting with URI:{}\n", requestURI);
         return restTemplate.exchange(requestURI, HttpMethod.GET, this.getHeaders(headers), responseType).getBody();
     }
-
-    protected <T> ResponseEntity<T> badGateWay(Class<T> responseType) {
-        return this.responseService.createResponse(null, HttpStatus.BAD_GATEWAY);
-    }
+//
+//    protected <T> ResponseEntity<T> badGateWay(Class<T> responseType) {
+//        return this.responseService.createResponse(null, HttpStatus.BAD_GATEWAY);
+//    }
 
 
     private HttpEntity getHeaders(Map<String, String> reqHeaders) {

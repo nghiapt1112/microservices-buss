@@ -6,16 +6,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
+
 
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableDiscoveryClient
 @EnableHystrix
+@ComponentScan(basePackages= {"com.nghia.libraries.commons.mss.infrustructure", "com.nghia.tut.mss"})
+
 public class CompositeServiceApplication {
     private static final Logger LOG = LoggerFactory.getLogger(CompositeServiceApplication.class);
 
