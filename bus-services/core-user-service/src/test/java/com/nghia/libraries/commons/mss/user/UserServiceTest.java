@@ -1,8 +1,8 @@
 package com.nghia.libraries.commons.mss.user;
 
-import com.nghia.tut.mss.domain.User;
-import com.nghia.tut.mss.domain.service.UserServiceImpl;
-import com.nghia.tut.mss.BaseServiceTest;
+import com.nghia.libraries.commons.mss.domain.User;
+import com.nghia.libraries.commons.mss.domain.service.UserServiceImpl;
+import com.nghia.libraries.commons.mss.BaseServiceTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

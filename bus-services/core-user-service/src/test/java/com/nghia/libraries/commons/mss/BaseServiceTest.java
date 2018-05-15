@@ -2,9 +2,9 @@ package com.nghia.libraries.commons.mss;
 
 import com.nghia.libraries.commons.mss.base.TestCase;
 import com.nghia.libraries.commons.mss.base.Variable;
-import com.nghia.tut.mss.base.TestCase;
-import com.nghia.tut.mss.base.Variable;
-import com.nghia.tut.mss.utils.JsonUtils;
+import com.nghia.libraries.commons.mss.base.TestCase;
+import com.nghia.libraries.commons.mss.base.Variable;
+import com.nghia.libraries.commons.mss.utils.JsonUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
