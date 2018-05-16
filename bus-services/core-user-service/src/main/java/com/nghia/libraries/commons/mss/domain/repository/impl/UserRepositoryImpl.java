@@ -1,8 +1,8 @@
 package com.nghia.libraries.commons.mss.domain.repository.impl;
 
-import com.nghia.tut.mss.domain.User;
-import com.nghia.tut.mss.domain.repository.UserRepository;
-import com.nghia.tut.mss.infrustructure.repository.impl.AbstractCustomRepository;
+import com.nghia.libraries.commons.mss.domain.User;
+import com.nghia.libraries.commons.mss.domain.repository.UserRepository;
+import com.nghia.libraries.commons.mss.infrustructure.repository.impl.AbstractCustomRepository;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
