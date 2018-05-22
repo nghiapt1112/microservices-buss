@@ -1,8 +1,8 @@
-package com.nghia.libraries.commons.mss.domain;
+package com.nghia.libraries.commons.mss.domain.user;
 
-import com.nghia.tut.mss.infrustructure.domain.AbstractEntity;
-import com.nghia.tut.mss.infrustructure.domain.Child2LayerObject;
-import com.nghia.tut.mss.infrustructure.domain.ChildObject;
+import com.nghia.libraries.commons.mss.infrustructure.domain.AbstractEntity;
+import com.nghia.libraries.commons.mss.infrustructure.domain.Child2LayerObject;
+import com.nghia.libraries.commons.mss.infrustructure.domain.ChildObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;

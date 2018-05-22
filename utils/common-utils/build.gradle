@@ -6,7 +6,7 @@ buildscript {
         springCloudVersion = 'Edgware.SR2'
         springBootVersion = '1.5.10.RELEASE'
         nghiaVersion = '1.0'
-        artifact = 'nghia-libraries'
+        artifact = 'common-utils'
     }
     repositories {
         mavenCentral()

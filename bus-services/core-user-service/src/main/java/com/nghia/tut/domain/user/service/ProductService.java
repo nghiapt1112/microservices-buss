@@ -1,11 +1,8 @@
-package com.nghia.libraries.commons.mss.domain.service;
+package com.nghia.libraries.commons.mss.domain.user.service;
 
 import com.nghia.libraries.commons.mss.domain.Product;
 import com.nghia.tut.mss.domain.Product;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Service
 public class ProductService {

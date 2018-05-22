@@ -1,4 +1,4 @@
-package com.nghia.libraries.commons.mss.domain.repository.impl;
+package com.nghia.libraries.commons.mss.domain.user.repository.impl;
 
 import com.nghia.tut.mss.domain.User;
 import com.nghia.tut.mss.domain.repository.UserRepository;
