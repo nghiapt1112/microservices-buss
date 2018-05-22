@@ -1,7 +1,7 @@
 package com.nghia.libraries.commons.mss.domain.user.service;
 
-import com.nghia.tut.mss.domain.User;
-import com.nghia.tut.mss.domain.repository.UserRepository;
+import com.nghia.libraries.commons.mss.domain.User;
+import com.nghia.libraries.commons.mss.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

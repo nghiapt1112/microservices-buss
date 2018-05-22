@@ -1,7 +1,7 @@
 package com.nghia.libraries.commons.mss.user;
 
-import com.nghia.tut.mss.BaseServiceTest;
-import com.nghia.tut.mss.utils.JsonUtils;
+import com.nghia.libraries.commons.mss.BaseServiceTest;
+import com.nghia.libraries.commons.mss.utils.JsonUtils;
 import org.junit.Test;
 
 public class UserFileTest extends BaseServiceTest {
