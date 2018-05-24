@@ -1,7 +1,7 @@
-package com.nghia.libraries.commons.mss.controller;
+package com.nghia.tut.controller;
 
-import com.nghia.libraries.commons.mss.domain.User;
-import com.nghia.libraries.commons.mss.domain.service.UserServiceImpl;
+import com.nghia.tut.domain.user.User;
+import com.nghia.tut.domain.user.service.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

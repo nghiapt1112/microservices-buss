@@ -1,4 +1,4 @@
-package com.nghia.libraries.commons.mss.domain.user;
+package com.nghia.tut.domain.user;
 
 import com.nghia.libraries.commons.mss.infrustructure.domain.AbstractEntity;
 import com.nghia.libraries.commons.mss.infrustructure.domain.Child2LayerObject;

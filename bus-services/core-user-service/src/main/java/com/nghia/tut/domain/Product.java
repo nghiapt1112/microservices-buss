@@ -1,4 +1,4 @@
-package com.nghia.libraries.commons.mss.domain;
+package com.nghia.tut.domain;
 
 public class Product {
     private String productCode;
