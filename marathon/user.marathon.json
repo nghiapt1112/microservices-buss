@@ -1,8 +1,8 @@
 {
-    "id": "ngh-composite", 
+    "id": "ngh-user", 
     "container": {
       "docker": {
-        "image": "ng_composite:latest",
+        "image": "ng_user:latest",
         "network": "BRIDGE",
         "portMappings": [
           {

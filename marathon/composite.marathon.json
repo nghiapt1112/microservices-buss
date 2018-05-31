@@ -1,0 +1,31 @@
+{
+    "id": "ngh-composite", 
+    "container": {
+      "docker": {
+        "image": "ng_composite:latest",
+        "parameters": [
+          {
+            "key": "add-host",
+            "value": "nghia.ms:10.0.0.25"
+          },
+          {
+            "key": "add-host",
+            "value": "nghia.tool:10.0.0.62"
+          }
+        ],
+        "network": "BRIDGE",
+        "portMappings": [
+          {
+            "containerPort": 38764,
+            "hostPort": 0,
+            "labels": {},
+            "protocol": "tcp",
+            "servicePort": 0
+          }
+        ]
+      }
+    },
+    "cpus": 0.1,
+    "mem": 1024.0,
+    "instances": 2
+}
