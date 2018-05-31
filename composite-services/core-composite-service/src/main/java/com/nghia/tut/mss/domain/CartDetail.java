@@ -3,10 +3,7 @@ package com.nghia.tut.mss.domain;
 import com.nghia.libraries.commons.mss.infrustructure.domain.AbstractObject;
 import org.apache.commons.collections.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public class CartDetail  extends AbstractObject {
     private String userCode;
@@ -29,7 +26,8 @@ public class CartDetail  extends AbstractObject {
 
     public CartDetail testData(){
         this.userCode = UUID.randomUUID().toString();
-        this.userOwner = new User();
+        this.userOwner = new User().testData();
+        this.products = Collections.emptyList();
         return this;
     }
     public CartDetail setProducts(List<Product> products) {

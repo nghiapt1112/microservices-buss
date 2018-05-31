@@ -2,24 +2,43 @@ package com.nghia.tut.mss.service.impl;
 
 import com.google.common.collect.ImmutableMap;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.nghia.libraries.commons.mss.infrustructure.service.AbstractServiceImpl;
 import com.nghia.tut.mss.domain.User;
 import com.nghia.tut.mss.service.UserService;
-import com.nghia.tut.mss.utils.BaseServiceImpl;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.net.URI;
 import java.util.Map;
 
 @Service
-public class UserServiceImpl extends BaseServiceImpl implements UserService {
+public class UserServiceImpl extends AbstractServiceImpl implements UserService {
+    private final String USER_SERVICE_ID = "BUS-USER";
+
+
+    private String DEFAULT_USER_SERVICE_URI() {
+        return this.getGATE_WAY_URL().concat("/user_path/user/");
+    }
+
+
+    private StringBuilder getUserSchema() {
+        URI uri = super.getServiceURL(USER_SERVICE_ID, DEFAULT_USER_SERVICE_URI());
+        StringBuilder serviceUrl = new StringBuilder(uri.toString());
+        if (serviceUrl.lastIndexOf("/") != serviceUrl.length() - 1) { // last character not equal with /
+            serviceUrl = serviceUrl.append("/");
+        }
+        return serviceUrl;
+    }
 
     private String userWithCode(String uCode) {
-        return this.getGATE_WAY_URL().concat("/user_path/user/").concat(uCode);
+        return this.getUserSchema()
+                .append("user") // UserController
+                .append("/").append(uCode) // findUserByCode()
+                .toString();
     }
 
     @HystrixCommand(fallbackMethod = "defaultUser")
     public User findByCode(String authKey, String uCode) {
-        Map header = ImmutableMap.of(AUTHORIZATION, authKey);
+        Map header = ImmutableMap.of(AUTHORIZATION, authKey == null ? "" : authKey);
         return super.getForObject(userWithCode(uCode), header, User.class);
     }
 

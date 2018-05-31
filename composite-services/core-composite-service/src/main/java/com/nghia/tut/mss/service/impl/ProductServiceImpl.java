@@ -5,19 +5,39 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.nghia.libraries.commons.mss.infrustructure.service.AbstractServiceImpl;
 import com.nghia.tut.mss.domain.Product;
 import com.nghia.tut.mss.service.ProductService;
-import com.nghia.tut.mss.utils.BaseServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.net.URI;
 import java.util.Map;
 
 @Service
 public class ProductServiceImpl extends AbstractServiceImpl implements ProductService {
-    String PRODUCT_SERVICE = "/product";
-    String PRODUCT_DETAIL = "/product/";
+    private String PRODUCT_SERVICE = "/product";
+    private String PRODUCT_DETAIL = "/product/";
+
+    private String DEFAULT_PRODUCT_SERVICE_URL() {
+        return this.getGATE_WAY_URL().concat("/product");
+    }
+
+    //FIXME: Duplicate code with UserServiceImpl.getUserSchema(...)
+
+    private StringBuilder getProjectURISchema() {
+        URI uri = super.getServiceURL(PRODUCT_SERVICE, this.DEFAULT_PRODUCT_SERVICE_URL());
+        StringBuilder serviceUrl = new StringBuilder(uri.toString());
+        if (serviceUrl.lastIndexOf("/") != serviceUrl.length() - 1) { // last character not equal with /
+            serviceUrl = serviceUrl.append("/");
+        }
+        return serviceUrl;
+    }
 
     private String productWithCode(String pCode) {
-        return this.getGATE_WAY_URL() + PRODUCT_SERVICE.concat(PRODUCT_DETAIL).concat(pCode);
+//        return this.getGATE_WAY_URL() + PRODUCT_SERVICE.concat(PRODUCT_DETAIL).concat(pCode);
+        String productURL = this.getProjectURISchema()
+                .append("/product") // ProductController
+                .append("/").append(pCode) // findProductByCode()
+                .toString();
+        return productURL;
     }
 
     @HystrixCommand(fallbackMethod = "defaultProduct")

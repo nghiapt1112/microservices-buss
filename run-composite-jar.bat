@@ -1,1 +1,1 @@
-java -jar build/ng_composite-1.0.jar
+java -jar -Dspring.output.ansi.enabled=ALWAYS -Deureka.instance.ipAddress=10.0.0.96 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5010 build/ng_composite-1.0.jar

@@ -20,16 +20,16 @@ public class ComposeServiceImpl extends AbstractServiceImpl implements ComposeSe
 
     @Override
     public CartDetail getCartDetail(String  authKey, String userCode, String productCode) {
-        LOG.warn("requesting ...................... with : {}", userCode);
-        LOG.warn("requesting ...................... with : {}", productCode);
-
-        Product productInfo = productService.findByCode(authKey, productCode);
-        LOG.warn("product after parse: {}", productInfo);
+        LOG.warn("requesting user ...................... with : {}", userCode);
+        LOG.warn("requesting product ...................... with : {}", productCode);
 
         User userInfo = userService.findByCode(authKey, userCode);
         LOG.warn("user after parse: {}", userInfo);
 
-        CartDetail cartDetail = new CartDetail().setProduct(productInfo).setUserOwner(userInfo).setUserCode(userCode);
+        Product productInfo = productService.findByCode(authKey, productCode);
+        LOG.warn("product after parse: {}", productInfo);
+
+        CartDetail cartDetail = new CartDetail().setProduct(null).setUserOwner(userInfo).setUserCode(userCode);
         return cartDetail;
     }
 

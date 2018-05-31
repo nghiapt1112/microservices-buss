@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,16 +27,17 @@ public class ComposeController {
 
     @RequestMapping(value = "/findBy", method = RequestMethod.GET)
     public CartDetail getProduct(HttpServletRequest httpServletRequest, @RequestParam String userCode) {
-        System.out.println("Finding composite info");
-        System.out.println("service-id" + env.getProperty("spring.application.name"));
+        System.out.println("\n====================\nFinding composite info");
+        System.out.println("service-id:\t" + env.getProperty("spring.application.name"));
         String authKey = httpServletRequest.getHeader("Authorization");
 //        composeService.addAuthKey(authKey); // remove this line.
-//        return composeService.getCartDetail(authKey, userCode, "productCode" + userCode);
-        return new CartDetail().testData();
+        authKey = authKey == null ? "" : authKey;
+        return composeService.getCartDetail(authKey, userCode, "productCode" + userCode);
+//        return new CartDetail().testData();
     }
 
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/param", method = RequestMethod.GET)
     public String getEnv(@RequestParam String envVar) {
         CONTROLLER_LOGGER.info("Requesting envVar {} with value: {}", envVar, env.getProperty(envVar));
         return env.getProperty(envVar);
