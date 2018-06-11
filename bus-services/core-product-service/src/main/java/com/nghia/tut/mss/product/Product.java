@@ -1,4 +1,4 @@
-package com.nghia.tut.mss;
+package com.nghia.tut.mss.product;
 
 public class Product {
     private String productCode;
