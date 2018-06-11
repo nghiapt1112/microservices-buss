@@ -3,6 +3,16 @@
     "container": {
       "docker": {
         "image": "ng_composite:latest",
+        "parameters": [
+          {
+            "key": "add-host",
+            "value": "nghia.ms:10.0.0.25"
+          },
+          {
+            "key": "add-host",
+            "value": "nghia.tool:10.0.0.62"
+          }
+        ],
         "network": "BRIDGE",
         "portMappings": [
           {
