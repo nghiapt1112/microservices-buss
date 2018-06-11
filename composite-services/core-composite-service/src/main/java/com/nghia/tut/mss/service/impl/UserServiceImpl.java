@@ -2,16 +2,19 @@ package com.nghia.tut.mss.service.impl;
 
 import com.google.common.collect.ImmutableMap;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.nghia.libraries.commons.mss.infrustructure.service.AbstractServiceImpl;
 import com.nghia.tut.mss.domain.User;
 import com.nghia.tut.mss.service.UserService;
+import com.nghia.tut.mss.utils.CompositeAbstractService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.util.Map;
 
 @Service
-public class UserServiceImpl extends AbstractServiceImpl implements UserService {
+public class UserServiceImpl extends CompositeAbstractService implements UserService {
+    protected static final Logger LOG = LoggerFactory.getLogger("UserService_Logger");
     private final String USER_SERVICE_ID = "BUS-USER";
 
 
@@ -37,7 +40,7 @@ public class UserServiceImpl extends AbstractServiceImpl implements UserService 
     }
 
     @HystrixCommand(fallbackMethod = "defaultUser")
-    public User findByCode(String authKey, String uCode) {
+    public User findUserByCode(String authKey, String uCode) {
         Map header = ImmutableMap.of(AUTHORIZATION, authKey == null ? "" : authKey);
         return super.getForObject(userWithCode(uCode), header, User.class);
     }
@@ -45,7 +48,7 @@ public class UserServiceImpl extends AbstractServiceImpl implements UserService 
     public User defaultUser(String authKey, String uCode) {
         LOG.warn("Using fallback method for user-service");
 //        ResponseEntity<User> userResponse = super.badGateWay(User.class);
-//        return userResponse.getBody();\
+//        return userResponse.getBody();
         return null;
     }
 

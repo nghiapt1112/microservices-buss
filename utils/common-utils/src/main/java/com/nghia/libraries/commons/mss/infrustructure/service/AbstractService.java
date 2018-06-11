@@ -16,9 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public abstract class AbstractServiceImpl {
+public abstract class AbstractService {
     protected static final String AUTHORIZATION = "Authorization";
-    protected static final Logger LOG = LoggerFactory.getLogger(AbstractServiceImpl.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(AbstractService.class);
 
     @Autowired
     protected RestTemplate restTemplate;
@@ -44,8 +44,9 @@ public abstract class AbstractServiceImpl {
             uri = instance.getUri();
             LOG.debug("Resolved serviceId '{}' to URL '{}'.", serviceId, uri);
         } catch (Exception e) {
+            LOG.warn("Cannot get Instance of {}, trying to use defaultURI:", serviceId, fallbackURI);
+            LOG.error("Error cause: {}, \nError message: {}", e.getCause(), e.getMessage());
             uri = URI.create(fallbackURI);
-            e.printStackTrace();
         }
         return uri;
     }

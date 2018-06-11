@@ -64,11 +64,10 @@ public class AbstractCustomValidator implements org.springframework.validation.V
     @Override
     public void releaseInstance(ConstraintValidator<?, ?> instance) {
         LOGGER.warn("AbstractCustomValidator.releaseInstance");
-
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         LOGGER.warn("AbstractCustomValidator.afterPropertiesSet");
         ValidatorFactory validatorFactory = Validation
                 .byDefaultProvider()
@@ -88,5 +87,6 @@ public class AbstractCustomValidator implements org.springframework.validation.V
     }
 
     public void addExtraValidation(Object target, Errors errors) {
+        // TODO: for override validation.
     }
 }
