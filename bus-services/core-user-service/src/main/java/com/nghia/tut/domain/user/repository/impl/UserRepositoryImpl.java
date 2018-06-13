@@ -16,13 +16,13 @@ public class UserRepositoryImpl extends AbstractCustomRepository<User> implement
 
     public User findOneUser(String userCode) {
         Query searchUserQuery = new Query(Criteria.where("userCode").is(userCode));
-        return super.findOne(searchUserQuery, User.class);
+        return super.findOne(searchUserQuery);
     }
 
     @Override
     public User findbyId(String id) {
         Query searchUserQuery = new Query(Criteria.where("_id").is(id));
-        return super.findOne(searchUserQuery, User.class);
+        return super.findOne(searchUserQuery);
     }
 
     public List<User> find(String org) {
@@ -30,7 +30,7 @@ public class UserRepositoryImpl extends AbstractCustomRepository<User> implement
         Criteria criteria = Criteria.where("organizationCode").is(org);
 
         searchQuery.addCriteria(criteria);
-        return super.find(searchQuery, User.class);
+        return super.find(searchQuery);
     }
 
     public boolean updateMulti(String org) {
@@ -40,7 +40,7 @@ public class UserRepositoryImpl extends AbstractCustomRepository<User> implement
         Update update = new Update();
         update.set("userName", "Updated Success");
         update.set("modifiedAt", new Date());
-        return super.updateMulti(searchQuery, update, User.class);
+        return super.updateMulti(searchQuery, update);
     }
 
 

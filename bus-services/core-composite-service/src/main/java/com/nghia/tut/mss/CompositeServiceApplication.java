@@ -24,7 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @EnableHystrix
 @EnableSwagger2
-@ComponentScan(basePackages= {"com.nghia.libraries.commons.mss.infrustructure", "com.nghia.tut.mss"})
+@ComponentScan(basePackages= {"com.nghia.libraries.commons.mss", "com.nghia.tut.mss"})
 
 public class CompositeServiceApplication {
     private static final Logger LOG = LoggerFactory.getLogger(CompositeServiceApplication.class);
@@ -49,7 +49,11 @@ public class CompositeServiceApplication {
 
     @Bean
     public Docket  swaggerSettings() {
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any()).build().pathMapping("/").apiInfo(ApiInfo.DEFAULT);
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any()).build()
+                .pathMapping("/")
+                .apiInfo(ApiInfo.DEFAULT);
     }
 }

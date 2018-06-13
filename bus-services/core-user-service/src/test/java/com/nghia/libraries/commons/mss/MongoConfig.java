@@ -16,7 +16,8 @@ import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    private static final String MONGO_HOST = "localhost";
+    @Value("${mongo.host}")
+    private String MONGO_HOST;
     private static final int MONGO_PORT = 27017;
     private final int THREAD_PER_CORE = 3;
     private final int MONGO_CONNECTIONS_PER_THREAD = 3;

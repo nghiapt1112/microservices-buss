@@ -6,7 +6,7 @@ import com.nghia.tut.mss.utils.BaseService;
 
 public interface ProductService {
 
-    Product findByCode(String authKey, String pCode);
+    Product findProductByCode(String authKey, String pCode);
     Product defaultProduct(String authKey, String productCode);
 
 }

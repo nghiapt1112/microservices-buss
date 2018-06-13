@@ -1,6 +1,8 @@
 package com.nghia.tut.mss.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.nghia.tut.mss.domain.CartDetail;
+import com.nghia.tut.mss.domain.Product;
 import com.nghia.tut.mss.service.ComposeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,16 +28,23 @@ public class ComposeController {
     private ComposeService composeService;
 
     @RequestMapping(value = "/findBy", method = RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "defaultGetProduct")
     public CartDetail getProduct(HttpServletRequest httpServletRequest, @RequestParam String userCode) {
-        System.out.println("\n====================\nFinding composite info");
-        System.out.println("service-id:\t" + env.getProperty("spring.application.name"));
+        CONTROLLER_LOGGER.info("\n====================\nFinding composite info");
+        CONTROLLER_LOGGER.info("service-id:\t" + env.getProperty("spring.application.name"));
+
         String authKey = httpServletRequest.getHeader("Authorization");
-//        composeService.addAuthKey(authKey); // remove this line.
+
         authKey = authKey == null ? "" : authKey;
         return composeService.getCartDetail(authKey, userCode, "productCode" + userCode);
-//        return new CartDetail().testData();
     }
 
+    public CartDetail defaultGetProduct(HttpServletRequest httpServletRequest, @RequestParam String userCode) {
+        return new CartDetail()
+                .setProduct(new Product().defaultProduct())
+                .setUserCode(userCode)
+                .setUserOwner(null); //TODO: create default user data.
+    }
 
     @RequestMapping(value = "/param", method = RequestMethod.GET)
     public String getEnv(@RequestParam String envVar) {

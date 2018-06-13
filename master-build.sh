@@ -9,7 +9,8 @@ function note() {
 #set -e
 #. ./setup-env.sh
 
-note "Building discovery server...";       ./gradlew clean build -x test; cd -
+#note "Building Libraries...";       ./gradlew clean build -x test; cd -
+note "Building ...";       ./gradlew clean build -x test; cd -
 
 find . -name *1.0.jar -exec du -h {} \;
 

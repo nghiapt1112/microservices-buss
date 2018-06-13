@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,9 +25,9 @@ public class AbstractCustomRepository<E extends AbstractEntity> implements Custo
     }
 
     @Override
-    public void createBatch(Collection<E> entities, Class<?> type) {
+    public void createBatch(Collection<E> entities) {
         entities.forEach(el -> el.initDefaultFieldsCreate());
-        mongoTemplate.insert(entities, type);
+        mongoTemplate.insert(entities, this.getEntityClass());
     }
 
     @Override
@@ -35,8 +36,8 @@ public class AbstractCustomRepository<E extends AbstractEntity> implements Custo
     }
 
     @Override
-    public boolean updateMulti(Query query, Update update, Class<E> clazz) {
-        return mongoTemplate.updateMulti(query, update, clazz).wasAcknowledged();
+    public boolean updateMulti(Query query, Update update) {
+        return mongoTemplate.updateMulti(query, update, this.getEntityClass()).wasAcknowledged();
     }
 
 
@@ -46,18 +47,18 @@ public class AbstractCustomRepository<E extends AbstractEntity> implements Custo
     }
 
     @Override
-    public List<E> findAll(Class<E> type) {
-        return mongoTemplate.findAll(type);
+    public List<E> findAll() {
+        return mongoTemplate.findAll(this.getEntityClass());
     }
 
     @Override
-    public List<E> find(Query query, Class<E> type) {
-        return mongoTemplate.find(query, type);
+    public List<E> find(Query query) {
+        return mongoTemplate.find(query, this.getEntityClass());
     }
 
     @Override
-    public E findOne(Query query, Class<E> type) {
-        List<E> users = mongoTemplate.find(query, type);
+    public E findOne(Query query) {
+        List<E> users = mongoTemplate.find(query, this.getEntityClass());
         if (users.isEmpty()) {
             return null;
         }
@@ -70,4 +71,22 @@ public class AbstractCustomRepository<E extends AbstractEntity> implements Custo
         mongoTemplate.save(entity);
     }
 
+    public E getEntityInstance() {
+        Class<E> type = this.getEntityClass();
+        E inst = null;
+        try {
+            inst = type.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace(); // TODO hande e
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();// TODO hande e
+        }
+        return inst;
+    }
+
+    public Class<E> getEntityClass() {
+        ParameterizedType superClass = (ParameterizedType) getClass().getGenericSuperclass();
+        Class<E> type = (Class<E>) superClass.getActualTypeArguments()[0];
+        return type;
+    }
 }

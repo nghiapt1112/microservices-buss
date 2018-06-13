@@ -1,8 +1,8 @@
 package com.nghia.libraries.commons.mss.user;
 
-import com.nghia.libraries.commons.mss.domain.User;
-import com.nghia.libraries.commons.mss.domain.service.UserServiceImpl;
 import com.nghia.libraries.commons.mss.BaseServiceTest;
+import com.nghia.tut.domain.user.User;
+import com.nghia.tut.domain.user.service.UserServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +22,7 @@ public class UserServiceTest extends BaseServiceTest {
 
     @Test
     public void findOne() {
-        User foundUser = userService.findByCode("userName1");
+        User foundUser = userService.findByCode("userCode12");
         System.out.println(foundUser);
     }
 
