@@ -11,9 +11,9 @@ public interface CustomRepository<E extends AbstractEntity> {
 
     E createOne(E entity);
 
-    void createBatch(Collection<E> entities, Class<?> type);
+    void createBatch(Collection<E> entities);
 
-    boolean updateMulti(Query query, Update update, Class<E> type);
+    boolean updateMulti(Query query, Update update);
 
     void update(E entity);
 
@@ -21,9 +21,9 @@ public interface CustomRepository<E extends AbstractEntity> {
 
     void softRemove(E entity);
 
-    List<E> findAll(Class<E> type);
+    List<E> findAll();
 
-    List<E> find(Query query, Class<E> type);
+    List<E> find(Query query);
 
-    E findOne(Query query, Class<E> type);
+    E findOne(Query query);
 }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@RefreshScope
+//@RefreshScope
 public class UserController {
     protected static final Logger CONTROLLER_LOGGER = LoggerFactory.getLogger(UserController.class);
 

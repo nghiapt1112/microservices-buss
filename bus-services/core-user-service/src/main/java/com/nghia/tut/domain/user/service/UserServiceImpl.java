@@ -27,7 +27,7 @@ public class UserServiceImpl {
     }
 
     public void createBatch(Collection<User> users) {
-        userRepository.createBatch(users, User.class);
+        userRepository.createBatch(users);
     }
 
     public List<User> find(String orgName) {

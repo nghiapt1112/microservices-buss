@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.io.File;
@@ -30,6 +31,7 @@ import java.util.Objects;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ApplicationTest.class, MongoConfig.class})
 @WebFluxTest
+@WebAppConfiguration
 public abstract class BaseServiceTest {
     protected static final Logger LOGGER = LoggerFactory.getLogger(BaseServiceTest.class);
     protected Variable STORED_VARIABLES;
