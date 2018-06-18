@@ -1,0 +1,12 @@
+.gradle
+/build/
+/out/
+/target/
+*.class
+bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

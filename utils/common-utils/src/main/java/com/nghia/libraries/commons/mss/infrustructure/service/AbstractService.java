@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public abstract class AbstractService {
+public abstract class AbstractService extends GenericAbstractService {
     protected static final String AUTHORIZATION = "Authorization";
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractService.class);
 
@@ -30,8 +29,7 @@ public abstract class AbstractService {
     private LoadBalancerClient loadBalancerClient;
     @Autowired
     private ResponseService responseService;
-    @Autowired
-    private Environment env;
+
 
     public String getGATE_WAY_URL() {
         return env.getProperty("custom.gateway.url");
