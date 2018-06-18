@@ -1,4 +1,4 @@
-package com.nghia.libraries.commons.mss.base;
+package com.nghia.base.test;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

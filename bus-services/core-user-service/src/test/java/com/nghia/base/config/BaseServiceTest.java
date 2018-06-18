@@ -1,9 +1,7 @@
-package com.nghia.libraries.commons.mss;
+package com.nghia.base.config;
 
-import com.nghia.libraries.commons.mss.base.TestCase;
-import com.nghia.libraries.commons.mss.base.Variable;
-import com.nghia.libraries.commons.mss.base.TestCase;
-import com.nghia.libraries.commons.mss.base.Variable;
+import com.nghia.base.test.TestCase;
+import com.nghia.base.test.Variable;
 import com.nghia.libraries.commons.mss.utils.JsonUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
@@ -12,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {ApplicationTest.class, MongoConfig.class})
+@ContextConfiguration(classes = {ApplicationTest.class, MongoConfig.class, EmailConfig.class})
 @WebFluxTest
 @WebAppConfiguration
 public abstract class BaseServiceTest {

@@ -43,7 +43,7 @@ subprojects {
     targetCompatibility = 1.8
 
     dependencies {
-        compile('org.springframework.boot:spring-boot-starter-webflux')
+        compile('org.springframework.boot:spring-boot-starter')
 
         compile("org.springframework.cloud:spring-cloud-starter-config")
         compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
@@ -83,8 +83,10 @@ project(':ng_user') {
     dependencies {
         compile("org.projectreactor:reactor-spring:1.0.1.RELEASE")
         compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+        compile("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
 
         testCompile('org.springframework.boot:spring-boot-starter-test')
+        testCompile('org.springframework.boot:spring-boot-starter-webflux')
         testCompile('io.projectreactor:reactor-test')
     }
 }

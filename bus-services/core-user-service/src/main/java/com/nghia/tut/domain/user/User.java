@@ -4,6 +4,7 @@ import com.nghia.libraries.commons.mss.infrustructure.domain.AbstractEntity;
 import com.nghia.libraries.commons.mss.infrustructure.domain.Child2LayerObject;
 import com.nghia.libraries.commons.mss.infrustructure.domain.ChildObject;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -33,6 +34,8 @@ public class User extends AbstractEntity {
     private Child2LayerObject child2LayerObject9;
     private Child2LayerObject child2LayerObject10;
 
+    @Transient
+    private String ignoreField;
 
     public User() {
     }
@@ -134,5 +137,9 @@ public class User extends AbstractEntity {
 
     public Child2LayerObject getChild2LayerObject10() {
         return child2LayerObject10;
+    }
+
+    public String getIgnoreField() {
+        return ignoreField;
     }
 }

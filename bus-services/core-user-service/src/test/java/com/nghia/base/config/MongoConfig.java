@@ -1,4 +1,4 @@
-package com.nghia.libraries.commons.mss;
+package com.nghia.base.config;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
@@ -16,27 +16,28 @@ import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    @Value("${mongo.host}")
-    private String MONGO_HOST;
-    private static final int MONGO_PORT = 27017;
-    private final int THREAD_PER_CORE = 3;
-    private final int MONGO_CONNECTIONS_PER_THREAD = 3;
-
     @Autowired
     Environment env;
+    @Value("${mongo.host}")
+    private String MONGO_HOST;
+    @Value("${mongo.db}")
+    private String DB_NAME;
 
     @Override
     protected String getDatabaseName() {
-        return "myDB_TEST";
+        return DB_NAME;
     }
 
     @Override
     public MongoClient mongoClient() {
         final int availableCores = Runtime.getRuntime().availableProcessors();
         return new MongoClient(
-                new ServerAddress(MONGO_HOST, MONGO_PORT),
-                new MongoClientOptions.Builder()
-                        .connectionsPerHost((availableCores * THREAD_PER_CORE * MONGO_CONNECTIONS_PER_THREAD)).build());
+                new ServerAddress(MONGO_HOST, this.MONGO_PORT()),
+                new MongoClientOptions
+                        .Builder()
+                        .connectionsPerHost((availableCores * THREAD_PER_CORE() * MONGO_CONNECTIONS_PER_THREAD()))
+                        .build()
+        );
     }
 
     @Override
@@ -48,4 +49,15 @@ public class MongoConfig extends AbstractMongoConfiguration {
         return converter;
     }
 
+    private int MONGO_PORT() {
+        return env.getProperty("mongo.port", Integer.class);
+    }
+
+    private int THREAD_PER_CORE() {
+        return env.getProperty("mongo.thread_per_core", Integer.class);
+    }
+
+    private int MONGO_CONNECTIONS_PER_THREAD() {
+        return env.getProperty("mongo.connection_per_thread", Integer.class);
+    }
 }

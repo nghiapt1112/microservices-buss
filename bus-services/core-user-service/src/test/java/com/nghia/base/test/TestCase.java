@@ -1,10 +1,7 @@
-package com.nghia.libraries.commons.mss.base;
+package com.nghia.base.test;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.test.web.reactive.server.WebTestClient;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @JsonDeserialize(using = TestCaseDeserialization.class)
 public class TestCase {

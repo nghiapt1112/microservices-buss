@@ -1,4 +1,4 @@
-package com.nghia.libraries.commons.mss.base;
+package com.nghia.base.test;
 
 import com.nghia.libraries.commons.mss.utils.JsonUtils;
 import org.junit.Assert;

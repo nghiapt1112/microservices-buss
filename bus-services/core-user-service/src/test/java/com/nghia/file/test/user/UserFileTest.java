@@ -1,6 +1,6 @@
-package com.nghia.libraries.commons.mss.user;
+package com.nghia.file.test.user;
 
-import com.nghia.libraries.commons.mss.BaseServiceTest;
+import com.nghia.base.config.BaseServiceTest;
 import com.nghia.libraries.commons.mss.utils.JsonUtils;
 import org.junit.Test;
 
