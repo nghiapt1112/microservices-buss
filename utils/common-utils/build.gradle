@@ -1,39 +1,12 @@
 buildscript {
     ext {
-//      springBootVersion = '2.0.2.RELEASE'
-//      springCloudVersion = 'Finchley.RC2'  // boot:2.0
-
-        springCloudVersion = 'Edgware.SR2'
-        springBootVersion = '1.5.10.RELEASE'
-        nghiaVersion = '1.0'
+        groupName = 'com.nghia.tut.utils'
         artifact = 'nghia-libraries'
+        nghiaVersion = '1.0'
     }
-    repositories {
-        mavenCentral()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
-apply plugin: 'maven-publish'
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-//apply plugin: 'io.spring.dependency-management'  // boot:2.0
-
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
 }
 
 dependencies {
-//    compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-amqp')
@@ -41,10 +14,9 @@ dependencies {
 
     compile('javax.validation:validation-api:2.0.1.Final')
 
-//  ext-libraries
-    compile ("org.apache.commons:commons-lang3:3.7")
-    compile ("org.apache.commons:commons-collections4:4.1")
-    compile ("commons-io:commons-io:2.6")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+//    testCompile('org.springframework.boot:spring-boot-starter-test:2.0.2.RELEASE')
+//    testCompile('io.projectreactor:reactor-test:3.1.7.RELEASE')
 }
 
 dependencyManagement {
@@ -53,11 +25,10 @@ dependencyManagement {
     }
 }
 
-// FIXME: doesn't work any more...
-//jar {
-//    baseName = "${artifact}"
-//    version = "${nghiaVersion}"
-//}
+jar {
+    baseName = "${artifact}"
+    version = "${nghiaVersion}"
+}
 
 task sourceJar(type: Jar) {
     from sourceSets.main.allJava
@@ -67,7 +38,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = 'com.nghia.tut.utils'
-            artifactId  = "${artifact}"
+            artifactId = "${artifact}"
             version = "${nghiaVersion}"
 
             from components.java

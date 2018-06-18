@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        groupName = 'com.nghia.tut.utils'
+        artifact = 'nghia-mail-starter'
+        nghiaVersion = 'NghiaPT.RC1'
+    }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-logging')
+    compile('org.springframework.boot:spring-boot-autoconfigure')
+    compile("javax.mail:mail:1.4.1")
+    compile("org.springframework:spring-context-support")
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+jar {
+    baseName = "${artifact}"
+    version = "${nghiaVersion}"
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "${groupName}"
+            artifactId = "${artifact}"
+            version = "${nghiaVersion}"
+
+            from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+
+        }
+    }
+}
