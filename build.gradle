@@ -95,5 +95,6 @@ project(':ng_composite') {
     dependencies {
         compile("io.springfox:springfox-swagger2:${swaggerVersion}")
         compile("io.springfox:springfox-swagger-ui:${swaggerVersion}")
+        compile("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
     }
 }

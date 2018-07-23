@@ -1,7 +1,0 @@
-rootProject.name = 'microservices-libraries'
-
-include 'common-utils'
-include 'email-utils'
-
-project(':common-utils').name = 'cu'
-project(':email-utils').name = 'eu'
