@@ -1,6 +1,6 @@
-package com.nghia.tut.mss.product.service;
+package com.nghia.tut.mss.domain.product.service;
 
-import com.nghia.tut.mss.product.Product;
+import com.nghia.tut.mss.domain.product.Product;
 import org.springframework.stereotype.Service;
 
 @Service

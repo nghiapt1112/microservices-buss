@@ -1,8 +1,10 @@
 package com.nghia.tut.domain.user;
 
-import com.nghia.libraries.commons.mss.infrustructure.domain.AbstractEntity;
 import com.nghia.libraries.commons.mss.infrustructure.domain.Child2LayerObject;
 import com.nghia.libraries.commons.mss.infrustructure.domain.ChildObject;
+import com.nghia.libraries.mongo.infrustructure.domain.AbstractEntity;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,6 +15,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Document(collection = "user")
+@Data
+@NoArgsConstructor
 public class User extends AbstractEntity {
 
     @Field("userName")
@@ -37,9 +41,6 @@ public class User extends AbstractEntity {
     @Transient
     private String ignoreField;
 
-    public User() {
-    }
-
     public User(String name, String userCode) {
         this.name = name;
         this.userCode = userCode;
@@ -63,81 +64,10 @@ public class User extends AbstractEntity {
     }
 
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public String getOrganizationCode() {
-        return organizationCode;
-    }
-
     public User initTestData(String userCode) {
         return new User(null, "default user".concat(userCode), userCode, "default orgCoce");
     }
 
-    public Date getBirth() {
-        return birth;
-    }
-
-    public List<String> getJobs() {
-        return jobs;
-    }
-
-    public ChildObject getChildObject1() {
-        return childObject1;
-    }
-
-    public ChildObject getChildObject2() {
-        return childObject2;
-    }
-
-    public Child2LayerObject getChild2LayerObject1() {
-        return child2LayerObject1;
-    }
-
-    public Child2LayerObject getChild2LayerObject2() {
-        return child2LayerObject2;
-    }
-
-    public Child2LayerObject getChild2LayerObject3() {
-        return child2LayerObject3;
-    }
-
-    public Child2LayerObject getChild2LayerObject4() {
-        return child2LayerObject4;
-    }
-
-    public Child2LayerObject getChild2LayerObject5() {
-        return child2LayerObject5;
-    }
-
-    public Child2LayerObject getChild2LayerObject6() {
-        return child2LayerObject6;
-    }
-
-    public Child2LayerObject getChild2LayerObject7() {
-        return child2LayerObject7;
-    }
-
-    public Child2LayerObject getChild2LayerObject8() {
-        return child2LayerObject8;
-    }
-
-    public Child2LayerObject getChild2LayerObject9() {
-        return child2LayerObject9;
-    }
-
-    public Child2LayerObject getChild2LayerObject10() {
-        return child2LayerObject10;
-    }
 
     public String getIgnoreField() {
         return ignoreField;
