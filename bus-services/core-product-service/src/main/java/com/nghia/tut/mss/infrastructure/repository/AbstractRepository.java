@@ -1,13 +1,11 @@
 package com.nghia.tut.mss.infrastructure.repository;
 
 import com.nghia.libraries.mysql.infrustructure.domain.AbstractEntity;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractRepository<E extends AbstractEntity, ID> extends SimpleJpaRepository<E, ID> {

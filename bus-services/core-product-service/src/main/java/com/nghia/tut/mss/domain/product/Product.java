@@ -2,6 +2,11 @@ package com.nghia.tut.mss.domain.product;
 
 import com.nghia.libraries.mysql.infrustructure.domain.AbstractEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "product")
 public class Product extends AbstractEntity {
     private String productCode;
     private String name;
