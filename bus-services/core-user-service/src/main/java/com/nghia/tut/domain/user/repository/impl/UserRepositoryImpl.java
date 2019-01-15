@@ -1,6 +1,6 @@
 package com.nghia.tut.domain.user.repository.impl;
 
-import com.nghia.libraries.commons.mss.infrustructure.repository.impl.AbstractCustomRepository;
+import com.nghia.libraries.mongo.infrustructure.repository.impl.AbstractCustomRepository;
 import com.nghia.tut.domain.user.User;
 import com.nghia.tut.domain.user.repository.UserRepository;
 import org.springframework.data.mongodb.core.query.Criteria;

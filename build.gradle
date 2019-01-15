@@ -64,8 +64,6 @@ subprojects {
         //Ext libraries
         compile("com.nghia.tut.utils:nghia-libraries:1.0") {
             exclude module: 'spring-boot-starter-amqp'
-            exclude module: 'spring-boot-starter-tomcat'
-            exclude module: 'spring-boot-starter-data-mongodb'
         }
 
         runtime('org.springframework.boot:spring-boot-devtools')
@@ -81,13 +79,13 @@ subprojects {
 //
 project(':ng_user') {
     dependencies {
-        compile("org.projectreactor:reactor-spring:1.0.1.RELEASE")
-        compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-        compile("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
+        implementation("org.projectreactor:reactor-spring:1.0.1.RELEASE")
+        implementation("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
+        implementation('com.nghia.tut.utils:nghia-repository-mongo:RC1')
 
-        testCompile('org.springframework.boot:spring-boot-starter-test')
-        testCompile('org.springframework.boot:spring-boot-starter-webflux')
-        testCompile('io.projectreactor:reactor-test')
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        testImplementation('org.springframework.boot:spring-boot-starter-webflux')
+        testImplementation('io.projectreactor:reactor-test')
     }
 }
 

@@ -1,7 +1,7 @@
 package com.nghia.tut.mss.controller;
 
-import com.nghia.tut.mss.product.Product;
-import com.nghia.tut.mss.product.service.ProductService;
+import com.nghia.tut.mss.domain.product.Product;
+import com.nghia.tut.mss.domain.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

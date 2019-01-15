@@ -1,6 +1,13 @@
-package com.nghia.tut.mss.product;
+package com.nghia.tut.mss.domain.product;
 
-public class Product {
+import com.nghia.libraries.mysql.infrustructure.domain.AbstractEntity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "product")
+public class Product extends AbstractEntity {
     private String productCode;
     private String name;
     private int weight;

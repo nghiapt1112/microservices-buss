@@ -1,0 +1,10 @@
+dependencies{
+    implementation("org.projectreactor:reactor-spring:1.0.1.RELEASE")
+    implementation("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
+    implementation('com.nghia.tut.utils:nghia-repository-mysql:RC1')
+    implementation ("org.flywaydb:flyway-core")
+//
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-webflux')
+    testImplementation('io.projectreactor:reactor-test')
+}
