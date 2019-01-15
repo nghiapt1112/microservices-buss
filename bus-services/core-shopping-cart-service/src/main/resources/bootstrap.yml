@@ -3,4 +3,4 @@ spring:
     name: shopping_cart_service
   cloud:
     config:
-      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@localhost:8888}
+      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@nghia.ms:8888}

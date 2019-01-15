@@ -8,5 +8,6 @@ dependencies{
     compile('org.projectlombok:lombok:1.18.4')
     apt('org.projectlombok:lombok:1.18.4')
 
+    implementation("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
 }
 
