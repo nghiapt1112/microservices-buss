@@ -1,6 +1,6 @@
 spring:
   application:
-    name: shopping_cart_service
+    name: bus-cart
   cloud:
     config:
       uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@nghia.ms:8888}
