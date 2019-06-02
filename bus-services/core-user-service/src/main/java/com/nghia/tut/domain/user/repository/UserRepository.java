@@ -1,7 +1,7 @@
 package com.nghia.tut.domain.user.repository;
 
 
-import com.nghia.libraries.commons.mss.infrustructure.repository.CustomRepository;
+import com.nghia.libraries.mongo.infrustructure.repository.CustomRepository;
 import com.nghia.tut.domain.user.User;
 
 import java.util.List;
