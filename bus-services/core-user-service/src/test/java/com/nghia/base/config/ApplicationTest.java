@@ -6,6 +6,8 @@ import com.nghia.service.test.mail.EmailServiceWrongTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 /**
  * <b>Beans will be defined here</b>
@@ -17,6 +19,13 @@ import org.springframework.context.annotation.Configuration;
         "com.nghia.tut.infrastructure"
 })
 public abstract class ApplicationTest {
-
+    @Bean
+    public TaskExecutor getTaskExecutor() {
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(5);
+        taskExecutor.setMaxPoolSize(10);
+        taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+        return taskExecutor;
+    }
 
 }

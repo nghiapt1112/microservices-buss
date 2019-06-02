@@ -38,6 +38,7 @@ public class UserController {
         CONTROLLER_LOGGER.info("\t\t\tdb name {}", dbName);
 
         return userService.findById(id);
+
     }
 
     @PostMapping(value = {"/", ""})
