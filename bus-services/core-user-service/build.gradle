@@ -8,6 +8,13 @@ dependencies{
     compile('org.projectlombok:lombok:1.18.4')
     apt('org.projectlombok:lombok:1.18.4')
 
+    implementation("org.projectreactor:reactor-spring:1.0.1.RELEASE")
     implementation("com.nghia.tut.utils:nghia-mail-starter:NghiaPT.RC1")
+    implementation('com.nghia.tut.utils:nghia-repository-mongo:RC1')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-webflux')
+    testImplementation('io.projectreactor:reactor-test')
+
 }
 
