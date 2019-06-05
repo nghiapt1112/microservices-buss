@@ -1,5 +1,7 @@
 package com.nghia.tut;
 
+//import com.nghia.libraries.email.infrustructure.mail.EnableEmail;
+
 import com.nghia.libraries.email.infrustructure.mail.EmailAutoConfiguraiton;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +11,7 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@Import(EmailAutoConfiguraiton.class)
+@Import(value = {EmailAutoConfiguraiton.class})
 public class UserServiceApplication {
 
     public static void main(String[] args) {

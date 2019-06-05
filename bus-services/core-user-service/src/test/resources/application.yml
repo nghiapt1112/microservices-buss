@@ -1,9 +1,17 @@
-mongo.host: 10.0.0.62
-mongo.port: 27017
-mongo.db: myDB_TEST
-mongo.thread_per_core: 3
-mongo.connection_per_thread: 3
+#mongo.host: localhost
+#mongo.port: 37019
+#mongo.db: test1
+#mongo.thread_per_core: 3
+#mongo.connection_per_thread: 3
 
+spring:
+  data:
+    mongodb:
+      username: dev
+      password: abc123
+      authentication-database: userdb
+      host: localhost
+      port: 37019
 
 logging:
   level:
@@ -33,3 +41,12 @@ logging:
 
     # To get rid of fake WARN messages: "Deprecated trace headers detected. Please upgrade Sleuth to 1.1 or start sending headers present in the TraceMessageHeaders class",
     org.springframework.cloud.sleuth.instrument.messaging.MessagingSpanExtractor: ERROR
+
+---
+spring:
+  profiles:
+    active: test
+  data:
+    mongodb:
+      host: localhost
+      database: test123
