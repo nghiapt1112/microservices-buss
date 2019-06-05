@@ -28,7 +28,7 @@ public class ProductRepositoryImpl extends AbstractCustomRepository<Product, Lon
         Query query = entityManager.createQuery(hql.toString(), Product.class);
         Map<String, Object> params = new HashMap<>();
         params.put("name", name);
-        params.keySet().forEach(p -> query.setParameter(p, params.get(p)));
+        params.forEach((k,v) -> query.setParameter(k, v));
 
         return query.getResultList();
     }
