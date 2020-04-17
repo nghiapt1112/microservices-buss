@@ -23,11 +23,11 @@ public class UserServiceImpl {
     }
 
     public User createOne(User user) {
-        return userRepository.createOne(user);
+        return userRepository.insert(user);
     }
 
     public void createBatch(Collection<User> users) {
-        userRepository.createBatch(users);
+        userRepository.insert(users);
     }
 
     public List<User> find(String orgName) {
@@ -39,10 +39,12 @@ public class UserServiceImpl {
     }
 
     public boolean remove(User user) {
-        return userRepository.remove(user);
+        userRepository.delete(user);
+        return true;
     }
 
     public void softRemove(User user) {
-        userRepository.softRemove(user);
+        user.setDeleted(true);
+        userRepository.save(user);
     }
 }

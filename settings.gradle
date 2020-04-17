@@ -1,11 +1,11 @@
 rootProject.name = 'bus-services'
 
-include 'bus-services/core-product-service'
+//include 'bus-services/core-product-service'
 include 'bus-services/core-user-service'
-include 'bus-services/core-composite-service'
-include 'bus-services/core-shopping-cart-service'
+//include 'bus-services/core-composite-service'
+//include 'bus-services/core-shopping-cart-service'
 
-project(':bus-services/core-product-service').name= 'ng_product'
+//project(':bus-services/core-product-service').name= 'ng_product'
 project(':bus-services/core-user-service').name= 'ng_user'
-project(':bus-services/core-composite-service').name= 'ng_composite'
-project(':bus-services/core-shopping-cart-service').name='ng_cart'
+//project(':bus-services/core-composite-service').name= 'ng_composite'
+//project(':bus-services/core-shopping-cart-service').name='ng_cart'

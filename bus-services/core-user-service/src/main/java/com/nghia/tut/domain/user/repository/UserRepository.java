@@ -1,15 +1,12 @@
 package com.nghia.tut.domain.user.repository;
 
-import com.nghia.libraries.mongo.infrustructure.repository.CustomRepository;
 import com.nghia.tut.domain.user.User;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface UserRepository extends CustomRepository<User> {
-    User findOneUser(String userCode);
-    User findbyId(String id);
+@Repository
+public interface UserRepository extends MongoRepository<User, String>, UserRepositoryCustom {
 
-    List<User> find(String org);
-
-    boolean updateMulti(String org);
 }

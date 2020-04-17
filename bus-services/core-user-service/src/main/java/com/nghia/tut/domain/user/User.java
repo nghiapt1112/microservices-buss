@@ -1,11 +1,9 @@
 package com.nghia.tut.domain.user;
 
-import com.nghia.libraries.commons.mss.infrustructure.domain.Child2LayerObject;
-import com.nghia.libraries.commons.mss.infrustructure.domain.ChildObject;
-import com.nghia.libraries.mongo.infrustructure.domain.AbstractEntity;
+import com.nghia.tut.infrastructure.utils.AbstractEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
